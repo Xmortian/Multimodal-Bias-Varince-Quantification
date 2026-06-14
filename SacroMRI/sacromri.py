@@ -1,27 +1,4 @@
-"""
-=============================================================================
- NOVEL PROCEDURE FOR BIAS–VARIANCE QUANTIFICATION IN MULTIMODAL LEARNING
- SacroMRI Dataset — Kaggle Notebook
 
- ╔══════════════════════════════════════════════════════════════════════╗
- ║  ★  INSTRUCTIONS: DELETE ALL PREVIOUS CELLS.                        ║
- ║     PASTE THIS ENTIRE FILE AS ONE SINGLE NEW CELL AND RUN IT.       ║
- ║     Do NOT split it across multiple cells.                           ║
- ╚══════════════════════════════════════════════════════════════════════╝
-
- Confirmed dataset layout (from os.walk):
-   /kaggle/input/datasets/fallahhnajjar/sacromri/
-     SacroMRI Dataset.csv          ← CSV one level ABOVE SacroMRI/
-     SacroMRI/
-       train/  AS/      AS (1).png … AS (933).png
-               Normal/  Normal (1).png …
-       val/    AS/ | Normal/
-       test/   AS/ | Normal/
-
- Labels  : AS = 1  |  Normal = 0
- Images  : PNG, resized to 340×340, kept as float32 throughout
-=============================================================================
-"""
 
 # ══════════════════════════════════════════════════════════════════════════════
 # 0.  ALL IMPORTS — must be at the very top of the single cell

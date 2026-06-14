@@ -1,28 +1,3 @@
-"""
-=============================================================================
- HYPERPARAMETER COMPARISON STUDY — HAM10000
- (companion to ham_pipeline.py; UNIFIED settings so the ResNet50 baseline
-  matches the main 17-backbone study: same backbone, 8 epochs, same default
-  hyperparameters, same RGB preprocessing, same patient-level 7-class split)
-
- EXPERIMENT 1 : Optimizer        (AdamW, SGD, RMSprop, Adam)
- EXPERIMENT 2 : Learning rate    (1e-3, 3e-4, 1e-5)            [trimmed]
- EXPERIMENT 3 : Batch size       (8, 16, 32, 64)
- EXPERIMENT 4 : Dropout rate     (0.0, 0.3, 0.5)               [trimmed]
- EXPERIMENT 5 : Activation       (ReLU, GELU, ELU, Tanh)
- EXPERIMENT 6 : LR Scheduler     (Cosine, StepLR, ExponentialLR, None)
- EXPERIMENT 7 : Weight decay     (0, 1e-4, 1e-2)               [trimmed]
- EXPERIMENT 8 : Parameter efficiency (reads HAM_tally_incremental.csv)
-
- Backbone fixed to ResNet50; one variable changes at a time.
- Default config == main-study ResNet50:
-   optimizer=adamw, lr=3e-4, batch=16, dropout=0.3, activation=gelu,
-   scheduler=cosine, weight_decay=1e-4, 8 epochs.
-
- Metrics reported are imbalance-aware (HAM10000 is dominated by 'nv'):
-   Accuracy, Macro-F1, Balanced Accuracy, macro-AUC (ovr), Log-Loss.
-=============================================================================
-"""
 
 import os, glob, warnings, time
 import numpy as np

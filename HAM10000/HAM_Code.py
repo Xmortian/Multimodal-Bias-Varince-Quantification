@@ -1,37 +1,4 @@
-"""
-=============================================================================
- MULTI-BACKBONE BIAS-VARIANCE PIPELINE — HAM10000  (all 17 backbones)
- "A Novel Procedure for Bias-Variance Quantification in Multimodal
-  Learning Systems"
 
- Ported from the SacroMRI pipeline. Same method, same 17 backbones, same
- four quantifiers (WEAT bias, DCE, ssCV variance, MC-Dropout entropy),
- same plot suite. Only the DATA LAYER and a few task constants changed.
-
- KEY DIFFERENCES vs SacroMRI (why the changes were necessary):
-   - HAM10000 has NO train/val/test folders and NO class subfolders.
-     All 10,015 JPGs sit flat in two folders; the label is only in the CSV.
-     -> We build stratified, PATIENT-LEVEL splits in code, grouped by
-        lesion_id (a patient can have several images; they must not leak
-        across splits).
-   - 7 classes (akiec, bcc, bkl, df, mel, nv, vasc), not binary.
-     -> N_CLASSES = 7; AUC computed one-vs-rest (macro).
-   - Clinical features are age, sex, localization (one-hot) — REAL,
-     non-leaking (confirmed by the sanity check: tabular-only acc 0.697
-     vs 0.670 baseline).
-   - Images are dermatoscopic RGB photos, not MRIs. The MRI-specific
-     N4 bias-field approximation and centre-of-mass alignment are removed;
-     we keep z-scoring + resize. (Those MRI steps were meaningless on
-     dermatoscopy and could distort colour information.)
-   - WEAT bias is now grounded on a REAL protected attribute (sex:
-     female vs male) instead of random Gaussian poles. This makes the
-     bias number defensible in the thesis.
-
- RESUMABILITY: after each backbone finishes, its row is appended to
-   HAM_tally_incremental.csv. On restart, any backbone already present in
-   that file is SKIPPED, so an interrupted run resumes where it stopped.
-=============================================================================
-"""
 
 import os, glob, warnings, time
 import numpy as np

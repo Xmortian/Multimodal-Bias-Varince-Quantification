@@ -1,21 +1,4 @@
-"""
-=============================================================================
- FIXED MULTI-BACKBONE COMPARISON — SacroMRI
- 
- Fixes applied:
-   FIX 1 — NaN in sigma2: AdaptiveAvgPool2d(1) applied uniformly across ALL
-            backbones before projection. Guarantees consistent [B, C] tensors
-            into ssCV, eliminating shape mismatches.
-            
-   FIX 2 — Inception v3 input size: conditional resize to 299×299 for
-            inception_v3 only; all others remain 340×340. Prevents corrupted
-            spatial features that produced the fake |d|=0.0019 bias score.
-            
-   FIX 3 — Label leakage: diagnosis_flag, bone_marrow_edema, erosions are
-            explicitly stripped from CLINICAL_FEATURES. Model sees only 6
-            pre-diagnostic patient-reported and lab values, never the label.
-=============================================================================
-"""
+
 
 import os, glob, warnings, time
 import numpy as np

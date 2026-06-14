@@ -1,36 +1,4 @@
-"""
-=============================================================================
- HAM10000 RE-SCORE  —  run ONCE after all 17 backbones finish
-=============================================================================
 
-What this does (NO retraining of any CNN):
-  1. For every backbone present in HAM_tally_incremental.csv:
-       - load its saved best weights  (HAM_{key}_best.pt)
-       - regenerate train + test embeddings via a single forward pass
-         (inference only; ~2-4 min/backbone on GPU)
-       - cache embeddings to disk (HAM_emb_{key}.npz) so this never has to
-         repeat
-  2. Compute TWO new test-set metrics that are robust to class imbalance:
-       - Macro-F1        (unweighted mean F1 across all 7 classes)
-       - Balanced Acc    (mean per-class recall)
-     These prove the model learns ALL classes, not just majority "nv".
-  3. Re-run ssCV with STRATIFIED subsampling (proportional across the 7
-     classes) so sigma2 is consistent for ALL backbones and cannot break
-     when a rare class would otherwise drop to zero.
-  4. Patch HAM_tally_incremental.csv and write HAM_tally_all17_RESCORED.csv
-     plus refreshed plots.
-
-WHY this is safe:
-  - Uses each model's checkpointed best weights -> numbers correspond to the
-    exact state each backbone was saved at.
-  - Re-generating embeddings from those weights is deterministic inference.
-  - Every backbone now uses the SAME stratified ssCV method -> no mixed
-    methodology in the final table.
-
-Run:
-  python ham_rescore.py
-=============================================================================
-"""
 
 import os, glob, time, warnings
 import numpy as np

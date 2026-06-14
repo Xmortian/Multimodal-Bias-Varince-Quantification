@@ -1,7 +1,5 @@
 """
 =============================================================================
- HYPERPARAMETER COMPARISON STUDY — SacroMRI
- Directly addresses supervisor's requirements:
 
  EXPERIMENT 1 : Optimizer comparison      (AdamW vs SGD vs RMSprop vs Adam)
  EXPERIMENT 2 : Learning rate comparison  (1e-2, 1e-3, 3e-4, 1e-4, 1e-5)
@@ -12,8 +10,6 @@
  EXPERIMENT 7 : Weight decay comparison   (0, 1e-5, 1e-4, 1e-3, 1e-2)
  EXPERIMENT 8 : Parameter efficiency      (model params vs accuracy vs bias)
 
- Backbone fixed to ResNet50 for all hyperparameter experiments
- (controls the variable — only one thing changes at a time)
 
  Final output: best hyperparameter per category + full comparison table
 =============================================================================
