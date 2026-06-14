@@ -1,0 +1,3 @@
+System,WEAT |d|,Bias p-value,Bias class,Mean |DCE|,σ²(δ=0.0),σ²(δ=0.3),σ²(δ=0.5),H_epistemic,H_aleatoric,KL(p̄||u),Test Accuracy,Test Log-Loss
+Unimodal  (Image-only),1.9232,0.0004,High bias   |d|≥0.5,0.0,0.0,0.000393,0.001059,0.00086,0.10743,0.58486,0.9845,0.0746
+Multimodal (Img+Meta),1.9449,0.0004,High bias   |d|≥0.5,0.0,0.0,0.0,0.0,2e-05,0.00018,0.69295,1.0,0.0

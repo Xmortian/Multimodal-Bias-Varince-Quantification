@@ -1,0 +1,8 @@
+Experiment,Best Value,Best Accuracy,Best Macro-F1,Best AUC
+Optimizer,adamw,0.8349,0.6943,0.956
+Learning Rate,0.001,0.8338,0.6689,0.9569
+Batch Size,32,0.8338,0.6715,0.9541
+Dropout Rate,0.3,0.8338,0.6819,0.9566
+Activation Function,tanh,0.8235,0.6845,0.9558
+LR Scheduler,exponential,0.8204,0.6929,0.9554
+Weight Decay (λ),0.0001,0.8235,0.6321,0.9546
